@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- A biblioteca bundle já contem os arquivos JS do Bootstrap, Popper, e jQuery.
+    <script src="js/bootstrap.bundle.js"></script>-->
+    <title>FTT EC LP2 N1!!</title>
+    <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+    <STYLE>
+        .center-txt {
+            text-align: center;
+            color: black;
+            width: 90px;
+            padding: 4px;
+            margin:0;
+            border:0;
+        }
+        .button-selected {
+            background-color: #343a40;
+            color: white;
+            border-radius: 15px;
+        }       
+        .width-button-bar {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-right: 0;
+            margin-left: 0;
+            
+        }
+        .bottom-button-bar {
+            margin:0;
+            padding:0;
+            border:0;
+            width: 100%;
+        }
+        .icon-font {
+            font-size: 40px;   
+        }
+        main {
+            padding-top: 56px;
+            padding-bottom: 102px;
+        }
+
+        .card {
+             width: 200px;
+             height: 200px;
+             display: inline-block; 
+             margin-bottom: 10px; 
+             margin-left: 10px;
+             box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+             cursor: pointer;
+        }
+
+        .transparent_screen {
+            content: '';
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 99;
+            display: none;
+        }
+
+        .inline_block {
+            display: inline-block;
+        }
+
+        .search_input {
+            display: inline-block;
+            width: 200px;
+        }
+
+        .hero_name_container {
+            line-height: 40px; background-color: black; color: white; text-align: center; font-weight: bold;
+        }
+        
+        .hero_name_container_wrapper {
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80%; margin: auto;
+        }
+
+        .hero_image {
+            height: 160px; width: inherit; width: 100%;
+        }
+
+        .search_button {
+            background-color: #424242;
+            color: white;
+            height: 30px;
+            vertical-align: top;
+            width: 180px;
+            text-align: center;
+            padding-top: 2px;
+            cursor: pointer;
+        }
+
+        .loading {
+            position: fixed;
+            z-index: 999;
+            height: 2em;
+            width: 2em;
+            overflow: show;
+            margin: auto;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            visibility: hidden;
+        }
+        
+        .loading:before {
+            content: '';
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .loading:not(:required) {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+        
+        .loading:not(:required):after {
+            content: '';
+            display: block;
+            font-size: 10px;
+            width: 1em;
+            height: 1em;
+            margin-top: -0.5em;
+            -webkit-animation: spinner 1500ms infinite linear;
+            -moz-animation: spinner 1500ms infinite linear;
+            -ms-animation: spinner 1500ms infinite linear;
+            -o-animation: spinner 1500ms infinite linear;
+            animation: spinner 1500ms infinite linear;
+            border-radius: 0.5em;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+            box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        }
+        
+        
+        @-webkit-keyframes spinner {
+            0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            }
+            100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+            }
+        }
+        @-moz-keyframes spinner {
+            0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            }
+            100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+            }
+        }
+        @-o-keyframes spinner {
+            0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            }
+            100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+            }
+        }
+        @keyframes spinner {
+            0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            }
+            100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) 
+        {
+            .card {
+                width: calc(50% - 20px);
+                height: 140px;
+           }
+
+           .hero_image {
+                height: 100px;
+            }
+
+            .hero_name_container {
+                line-height: 40px;
+            }
+
+            .search_button {
+                margin-top: 10px;;
+            }
+
+            .search_input {
+                width: 100%;
+            }
+
+            .center-txt {
+                width: 25%;
+            }
+        }
+  
+    </STYLE>
+    <SCRIPT>
+
+        var loadingDiv  = null,
+            modalDiv    = null;
+
+        window.onload = () => {
+            loadingDiv = document.getElementById('loading');
+            modalDiv = document.getElementById('hero_modal');
+            window.getHeroes();
+        }
+
+        window.showSpinner = () => {
+            loadingDiv.style.visibility = 'visible';
+        }
+          
+        window.hideSpinner = () => {
+          loadingDiv.style.visibility = 'hidden';
+        }
+
+        window.showModal = () => {
+            modalDiv.style.display = 'block';
+        }
+          
+        window.hideModal = () => {
+          modalDiv.style.display = 'none';
+        }
+
+        window.getHeroes = () => {
+            var hero_search = document.getElementById('hero_input').value,
+                q           = '';
+
+            if (hero_search)
+                q = `nameStartsWith=${hero_search}`;
+
+            var params = `limit=50&${q}`;
+            window.callAPI('http://gateway.marvel.com:80/v1/public/characters', params, window.generateList);
+        }
+
+        window.callAPI = (apiURL, parameters, callback) => {
+            window.showSpinner();
+            var xhr = new XMLHttpRequest(),
+            method = "GET",
+            publicKey = "908007c751ad435c09ad8e89c5a08fbf",
+            privateKey = "1a5c99eeb54a557e7400f4134f009cca2ac270d3",
+            url = `${apiURL}?ts=1&apikey=${publicKey}&hash=1c75ca124d70e2465bc3e2ae951e67b1&${parameters}`;
+        
+            xhr.open(method, url, true);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var parsed = JSON.parse(xhr.responseText);
+                    callback(parsed.data.results);
+                    window.hideSpinner();
+                }
+            };
+            xhr.send();
+        }
+
+        window.generateList = (heroes) => {
+            var html = heroes.length ? '' : '<div style="padding-left: 10px; font-weight: bold;"> Nenhum herói foi encontrado! </div>';
+            heroes.forEach((hero) => {
+                html += `
+                    <div class="card" onclick="window.openHeroDesc('${hero.name}','${hero.description.replace(/'/g, '&quot;').replace(/"/g, '&quot;')}')"> 
+                        <div style="width: 100%">
+                            <img src="${hero.thumbnail.path}.${hero.thumbnail.extension}" class="hero_image"/>
+                        </div>
+                        <div class="hero_name_container">
+                            <div class="hero_name_container_wrapper">
+                                ${hero.name} 
+                            </div>
+                        </div>  
+                    </div>
+                `;
+            });
+
+            document.getElementById('characterList').innerHTML = html;
+        }
+
+        window.openHeroDesc = (name, desc) => {
+            window.showModal();
+
+            var description = desc ? desc : 'Não possui descrição';
+
+            document.getElementById('hero_name').innerHTML = name;
+            document.getElementById('hero_desc').innerHTML = description;
+        }
+
+    </SCRIPT>
+</HEAD>
+
+<BODY lang="pt-br">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">&#x1F981; FTT EC LP2 N1!!!</a>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="navbar-nav float-right text-right pr-3">
+                <a class="nav-item nav-link" href="index.html">Splash</a>
+                <a class="nav-item nav-link" href="http://www.fundacaosalvadorarena.org.br/" target="newpage">CEFSA</a>
+                <a class="nav-item nav-link" href="about.html">Sobre</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" id="aluno">
+        <hr>
+        <!-- <h1><span class="badge badge-success">Projeto do aluno!!</span></h1>
+        <p><a href="https://github.com/public-apis/public-apis" target="_apis">Lista de APIs públicas</a></p> -->
+        <div id="loading" class="loading">Loading&#8230;</div>
+
+        <div class="transparent_screen" id="hero_modal">
+            <div class="modal" style="top: 50px; display: block;" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="hero_name"> </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="window.hideModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="hero_desc"></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="padding-bottom: 20px; padding-left: 10px;">
+            <input type="text" id="hero_input" class="search_input"/>
+            <div onclick="window.getHeroes()" class="inline_block search_button"> Buscar Herói / Vilão </div>
+        </div>
+        <div id="characterList"></div>
+
+    </main>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
+        <div class="row w-100 bottom-button-bar">
+            <div class="col-sm center-txt"><b onclick='window.location="tab01news.html"'>News<br><span class="icon-font">&#x1f4f0;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab02map.html"'>Map<br><span class="icon-font">&#x1f4cc;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03todo.html"'>Todo<br><span class="icon-font">&#x1F4DD;</span></b>
+            </div>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04project.html"'> Marvel <br><span class="icon-font">	&#x004D;</span></b>
+            </div>
+        </div>
+    </nav>
+</BODY>
+<!-- carga de scripts do Bootstrap, JQuery, Popper -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</HTML>

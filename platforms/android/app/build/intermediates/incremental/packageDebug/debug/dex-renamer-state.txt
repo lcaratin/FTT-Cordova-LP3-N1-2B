@@ -1,4 +1,4 @@
-#Sun Nov 03 13:26:26 BRT 2019
-base.0=C\:\\CordovaProjects\\FTT-Cordova-LP3-N1\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Sun Nov 03 17:53:31 BRT 2019
+base.0=C\:\\CordovaProjects\\FTT-Cordova-LP3-N1-2B\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
